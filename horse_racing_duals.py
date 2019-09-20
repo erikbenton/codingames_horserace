@@ -1,4 +1,9 @@
+import sys
+import math
 import random
+
+# Auto-generated code below aims at helping you parse
+# the standard input according to the problem statement.
 
 
 def swap(input_list, index_one, index_two):
@@ -43,6 +48,27 @@ def _quick_sort(input_list, left_index, right_index):
     return input_list
 
 
-a = [3, 5, 1, 6, 7, 2, 5, 8, 5, 7]
-quick_sort(a)
-print(str(a))
+def minimum_power_difference(input_list):
+    min_difference = input_list[1] - input_list[0]
+    for i in range(1, len(input_list) - 1):
+        if (input_list[i+1] - input_list[i]) < min_difference:
+            min_difference = input_list[i+1] - input_list[i]
+    return min_difference
+
+
+horses = []
+
+n = int(input())
+for i in range(n):
+    pi = int(input())
+    horses.append(pi)
+
+# Write an action using print
+# To debug: print("Debug messages...", file=sys.stderr)
+
+# First quicksort the horse powers
+quick_sort(horses)
+# Calculate the minimum differences
+min_power_diff = minimum_power_difference(horses)
+# Print the smallest number
+print(str(min_power_diff))
